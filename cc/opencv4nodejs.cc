@@ -57,7 +57,7 @@ int customCvErrorHandler(int status, const char* func_name, const char* err_msg,
     return 0;
 }
 
-void init(v8::Local<v8::Object> target) {
+NODE_MODULE_INIT(v8::Local<v8::Object> target) {
 	// can be disabled by defining env variable: OPENCV4NODEJS_DISABLE_EXTERNAL_MEM_TRACKING
 	ExternalMemTracking::Init(target);
 
@@ -134,5 +134,3 @@ void init(v8::Local<v8::Object> target) {
 	XImgproc::Init(target);
 #endif
 };
-
-NODE_MODULE(opencv4nodejs, init)
