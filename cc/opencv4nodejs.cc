@@ -46,6 +46,8 @@
 #include "ximgproc/ximgproc.h"
 #endif
 
+using v8::Isolate;
+
 int customCvErrorHandler(int status, const char* func_name, const char* err_msg, const char* file_name, int line, void* userdata) {
     std::string msg = "OpenCV Error: (" + std::string(err_msg) + ")"
       + " in " + std::string(func_name)
@@ -136,5 +138,6 @@ void init(v8::Local<v8::Object> target) {
 };
 
 NODE_MODULE_INIT() {
+	Isolate* isolate = context->GetIsolate();
 	init(exports);
 }
