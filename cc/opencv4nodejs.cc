@@ -46,6 +46,9 @@
 #include "ximgproc/ximgproc.h"
 #endif
 
+using node::AddEnvironmentCleanupHook;
+using v8::Isolate;
+
 int customCvErrorHandler(int status, const char* func_name, const char* err_msg, const char* file_name, int line, void* userdata) {
     std::string msg = "OpenCV Error: (" + std::string(err_msg) + ")"
       + " in " + std::string(func_name)
